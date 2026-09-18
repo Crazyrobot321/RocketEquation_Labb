@@ -16,4 +16,8 @@ public class FuelCalculator
             return 0;
         return fuel + TotalFuelForMass(fuel);
     }
+    public int SumTotalFuelForAllModules(int[] masses)
+    {
+        return masses.Sum(TotalFuelForMass);
+    }
 }

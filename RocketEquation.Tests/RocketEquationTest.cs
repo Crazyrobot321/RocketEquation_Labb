@@ -31,6 +31,18 @@
             // Assert
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void SumTotalFuelForAllModules_ReturnsExpectedResult()
+        {
+            // Arrange
+            var sut = new FuelCalculator();
+            var masses = new[] { 14, 1969, 100756 };
+            int expected = 51314;
+            // Act
+            var result = sut.SumTotalFuelForAllModules(masses);
 
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
