@@ -16,5 +16,16 @@
             // Assert
             Assert.Equal(expectedFuel, actualFuel);
         }
+        [Fact]
+        public void TotalFuelMass_Fourteen_ReturnsTwo()
+        {
+            // Arrange
+            var sut = new FuelCalculator();
+            // Act
+            int actualFuel = sut.TotalFuelForMass(14);
+            // Assert
+            Assert.Equal(2, actualFuel);
+        }
+
     }
 }
