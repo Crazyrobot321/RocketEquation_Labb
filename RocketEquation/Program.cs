@@ -15,7 +15,7 @@ namespace RocketEquation
 
             var calculator = new FuelCalculator();
             Console.WriteLine($"Del 1: {calculator.SumFuelForAllModules(fuel)}");
-            Console.WriteLine($"Del 2: {fuel.Sum(calculator.TotalFuelForMass)}");
+            Console.WriteLine($"Del 2: {calculator.SumTotalFuelForAllModules(fuel)}");
         }
     }
 }
