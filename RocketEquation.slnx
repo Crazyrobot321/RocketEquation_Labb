@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Common.Tests/Common.Tests.csproj" />
+  <Project Path="Common/Common.csproj" />
+  <Project Path="RocketEquation.Tests/RocketEquation.Tests.csproj" />
+  <Project Path="RocketEquation/RocketEquation.csproj" />
+</Solution>
