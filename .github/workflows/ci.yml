@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_CONFIGURATION: Release
-
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -28,10 +26,10 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --no-restore --configuration ${{BUILD_CONFIGURATION}}
+        run: dotnet build --no-restore --configuration $BUILD_CONFIGURATION
 
       - name: Test
-        run: dotnet test --no-build --configuration ${{BUILD_CONFIGURATION}}
+        run: dotnet test --no-build --configuration $BUILD_CONFIGURATION
       - name: Vem och vad startade detta?
         env:
           STARTAD_AV: ${{github.actor}}
