@@ -7,7 +7,7 @@ public class FuelCalculator
     }
     public int FuelForMass(int mass)
     {
-        return mass / 3 - 1;
+        return mass / 3 - 2;
     }
     public int TotalFuelForMass(int mass)
     {
