@@ -12,7 +12,7 @@ public class FuelCalculator
     public int TotalFuelForMass(int mass)
     {
         int fuel = FuelForMass(mass);
-        if (fuel <= 0) 
+        if (fuel <= 0)
             return 0;
         return fuel + TotalFuelForMass(fuel);
     }
