@@ -9,7 +9,13 @@ namespace RocketEquation
     {
         static void Main(string[] args)
         {
+            var input = Path.Combine(AppContext.BaseDirectory, "input.txt");
+            var text = File.ReadAllText(input);
+            var fuel = Input.Numbers(text);
 
+            var calculator = new FuelCalculator();
+            Console.WriteLine($"Del 1: {calculator.SumFuelForAllModules(fuel)}");
+            Console.WriteLine($"Del 2: {fuel.Sum(calculator.TotalFuelForMass)}");
         }
     }
 }
