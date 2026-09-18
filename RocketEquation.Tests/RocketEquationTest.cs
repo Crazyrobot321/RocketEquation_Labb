@@ -16,15 +16,20 @@
             // Assert
             Assert.Equal(expectedFuel, actualFuel);
         }
-        [Fact]
-        public void TotalFuelMass_Fourteen_ReturnsTwo()
+        [Theory]
+        [InlineData(14, 2)]
+        [InlineData(1969, 966)]
+        [InlineData(100756, 50346)]
+        public void TotalFuelForMass_ReturnsExpectedTotal(int mass, int expected)
         {
             // Arrange
             var sut = new FuelCalculator();
+
             // Act
-            int actualFuel = sut.TotalFuelForMass(14);
+            var result = sut.TotalFuelForMass(mass);
+
             // Assert
-            Assert.Equal(2, actualFuel);
+            Assert.Equal(expected, result);
         }
 
     }
