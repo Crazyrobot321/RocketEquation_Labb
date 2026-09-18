@@ -39,3 +39,15 @@ jobs:
             echo "Startad av $STARTAD_AV" - händelse: $HANDELSE - gren: $GREN"
 
             echo "Startad av $STARTAD_AV" - händelse: $HANDELSE - gren: $GREN" >> $GITHUB_STEP_SUMMARY
+  formatering:
+    name: Kodformatering
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Install .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - name: Kontrollera kodformatering
+        run: dotnet format --verify-no-changes --verbosity diagnostic
