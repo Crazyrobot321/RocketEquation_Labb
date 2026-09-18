@@ -3,6 +3,6 @@ public class FuelCalculator
 {
     public int SumFuelForAllModules(int mass)
     {
-        throw new NotImplementedException();
+        return (mass / 3) - 2;
     }
 }
