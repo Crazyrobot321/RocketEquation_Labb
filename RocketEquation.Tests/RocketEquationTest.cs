@@ -42,7 +42,7 @@
             var result = sut.SumTotalFuelForAllModules(masses);
 
             // Assert
-           await Assert.That(result).IsEqualTo(expected);
+            await Assert.That(result).IsEqualTo(expected);
         }
     }
 }
