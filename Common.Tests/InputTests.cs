@@ -1,12 +1,11 @@
 using AdventOfCode.Common;
-using System.Threading.Tasks;
 
 namespace Common.Tests;
 
 public class InputTests
 {
-    [Test]
-    public async Task Lines_SplitsOnNewline()
+    [Fact]
+    public void Lines_SplitsOnNewline()
     {
         // Arrange
         var text = "abc\ndef\nghi";
@@ -15,11 +14,11 @@ public class InputTests
         var actual = Input.Lines(text);
 
         // Assert
-        await Assert.That(actual).IsEquivalentTo(new[] { "abc", "def", "ghi" });
+        Assert.Equal(new[] { "abc", "def", "ghi" }, actual);
     }
 
-    [Test]
-    public async Task Lines_TrimsWhitespaceAndWindowsLineEndings()
+    [Fact]
+    public void Lines_TrimsWhitespaceAndWindowsLineEndings()
     {
         // Arrange
         var text = "  abc \r\ndef\r\n";
@@ -28,11 +27,11 @@ public class InputTests
         var actual = Input.Lines(text);
 
         // Assert
-        await Assert.That(actual).IsEquivalentTo(new[] { "abc", "def" });
+        Assert.Equal(new[] { "abc", "def" }, actual);
     }
 
-    [Test]
-    public async Task Lines_SkipsEmptyLines()
+    [Fact]
+    public void Lines_SkipsEmptyLines()
     {
         // Arrange
         var text = "abc\n\n\ndef\n";
@@ -41,44 +40,44 @@ public class InputTests
         var actual = Input.Lines(text);
 
         // Assert
-        await Assert.That(actual).IsEquivalentTo(new[] { "abc", "def" });
+        Assert.Equal(new[] { "abc", "def" }, actual);
     }
 
-    [Test]
-    public async Task Lines_OfEmptyText_IsEmpty()
+    [Fact]
+    public void Lines_OfEmptyText_IsEmpty()
     {
         // Arrange
         // Act
         var actual = Input.Lines("");
 
         // Assert
-        await Assert.That(actual).IsEmpty();
+        Assert.Empty(actual);
     }
 
-    [Test]
-    [Arguments("1 2 3", new[] { 1, 2, 3 })]
-    [Arguments("16,1,2", new[] { 16, 1, 2 })]
-    [Arguments("2x3x4", new[] { 2, 3, 4 })]
-    [Arguments("199\n200\n208", new[] { 199, 200, 208 })]
-    [Arguments("-5 10", new[] { -5, 10 })]
-    public async Task Numbers_SplitsOnAnySeparator(string text, int[] expected)
+    [Theory]
+    [InlineData("1 2 3", new[] { 1, 2, 3 })]
+    [InlineData("16,1,2", new[] { 16, 1, 2 })]
+    [InlineData("2x3x4", new[] { 2, 3, 4 })]
+    [InlineData("199\n200\n208", new[] { 199, 200, 208 })]
+    [InlineData("-5 10", new[] { -5, 10 })]
+    public void Numbers_SplitsOnAnySeparator(string text, int[] expected)
     {
         // Arrange
         // Act
         var actual = Input.Numbers(text);
 
         // Assert
-        await Assert.That(actual).IsEquivalentTo(expected);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
-    public async Task Numbers_OfEmptyText_IsEmpty()
+    [Fact]
+    public void Numbers_OfEmptyText_IsEmpty()
     {
         // Arrange
         // Act
         var actual = Input.Numbers("   \n  ");
 
         // Assert
-        await Assert.That(actual).IsEmpty();
+        Assert.Empty(actual);
     }
 }
