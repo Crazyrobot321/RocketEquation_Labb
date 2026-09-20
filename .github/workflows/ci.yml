@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_CONFIGURATION: Release
+      # Forces the .NET 10 SDK to run tests using Microsoft.Testing.Platform instead of legacy VSTest
+      DOTNET_TEST_RUNNER: Microsoft.Testing.Platform
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -30,6 +32,7 @@ jobs:
 
       - name: Test
         run: dotnet test --no-build --configuration $BUILD_CONFIGURATION
+        
       - name: Vem och vad startade detta?
         env:
           STARTAD_AV: ${{github.actor}}
@@ -37,8 +40,8 @@ jobs:
           GREN: ${{github.ref_name}}
         run: |
             echo "Startad av $STARTAD_AV" - händelse: $HANDELSE - gren: $GREN"
-
             echo "Startad av $STARTAD_AV" - händelse: $HANDELSE - gren: $GREN" >> $GITHUB_STEP_SUMMARY
+
   formatering:
     name: Kodformatering
     runs-on: ubuntu-latest
