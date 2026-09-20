@@ -2,25 +2,25 @@
 {
     public class RocketEquationTest
     {
-        [Theory]
-        [InlineData(12, 2)]
-        [InlineData(14, 2)]
-        [InlineData(1969, 654)]
-        [InlineData(100756, 33583)]
-        public void FuelForMass_ReturnsExpectedFuel(int mass, int expectedFuel)
+        [Test]
+        [Arguments(12, 2)]
+        [Arguments(14, 2)]
+        [Arguments(1969, 654)]
+        [Arguments(100756, 33583)]
+        public async Task FuelForMass_ReturnsExpectedFuel(int mass, int expectedFuel)
         {
             //Arrange
             var sut = new FuelCalculator();
             // Act
             int actualFuel = sut.FuelForMass(mass);
             // Assert
-            Assert.Equal(expectedFuel, actualFuel);
+            await Assert.That(actualFuel).IsEqualTo(expectedFuel);
         }
-        [Theory]
-        [InlineData(14, 2)]
-        [InlineData(1969, 966)]
-        [InlineData(100756, 50346)]
-        public void TotalFuelForMass_ReturnsExpectedTotal(int mass, int expected)
+        [Test]
+        [Arguments(14, 2)]
+        [Arguments(1969, 966)]
+        [Arguments(100756, 50346)]
+        public async Task TotalFuelForMass_ReturnsExpectedTotal(int mass, int expected)
         {
             // Arrange
             var sut = new FuelCalculator();
@@ -29,10 +29,10 @@
             var result = sut.TotalFuelForMass(mass);
 
             // Assert
-            Assert.Equal(expected, result);
+            await Assert.That(result).IsEqualTo(expected);
         }
-        [Fact]
-        public void SumTotalFuelForAllModules_ReturnsExpectedResult()
+        [Test]
+        public async Task SumTotalFuelForAllModules_ReturnsExpectedResult()
         {
             // Arrange
             var sut = new FuelCalculator();
@@ -42,7 +42,7 @@
             var result = sut.SumTotalFuelForAllModules(masses);
 
             // Assert
-            Assert.Equal(expected, result);
+            await Assert.That(result).IsEqualTo(expected);
         }
     }
 }
